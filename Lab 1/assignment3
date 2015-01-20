@@ -1,0 +1,89 @@
+﻿1).
+create table employee_kc(emp_no varchar (5) primary key,dept_no numeric (2),emp_name char (15),Desig char (15),Basic_sal numeric (10,2),Join_date date,gender char (1) check(gender in('M','F')));    
+
+
+
+2).
+insert into employee_kc
+values('E032','20','Vibin','Manager',25000,'11-JUN-96','M');
+
+insert into employee_kc
+values('E058','2','Krishnan','Asst. Manager',4000,'10-NOV-99','M');
+
+insert into employee_kc
+values('E048','20','Lakshmi','Asst. Manager',5000,'11-Oct-2001','F');
+
+
+
+
+3).
+select *
+from employee_kc;
+
+
+4).
+select emp_no,emp_name,Desig,basic_sal
+from employee_kc;
+
+
+5).
+select emp_no ,emp_name 
+from employee_kc 
+where dept_no=2;
+
+
+6).
+Select emp_no,emp_name,Desig,dept_no,basic_sal 
+from employee_kc o
+order by basic_sal desc;
+
+
+7).
+Select distinct Desig 
+from employee_kc;
+
+
+8).
+Select emp_no,emp_name,Desig,basic_sal 
+from employee_kc 
+order by basic_sal desc,emp_name asc;
+
+
+9).
+select * 
+from employee_kc 
+where Join_date between '01-01-1999'and '12-31-1999';
+
+
+10).
+truncate table employee_kc;
+
+alter table employee_kc
+alter column dept_no type varchar (20);
+
+select *
+from employee_kc; 
+
+
+11).
+select emp_no,emp_name,Desig,basic_sal
+from employee_kc 
+order by basic_sal desc;
+
+
+12).
+create table emp_contact_kc(eno varchar (5) references employee_kc(emp_no),e_contact numeric (10));
+
+13).
+alter table emp_contact_kc
+add column address varchar (30);
+
+14).
+delete from employee_kc
+where basic_sal<5000;
+
+
+15).
+drop table employee_kc;
+
+

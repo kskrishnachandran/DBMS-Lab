@@ -1,0 +1,177 @@
+﻿create table client_master_kc(Client_no varchar (6),cl_name varchar (20),Address1 varchar (30),Address2 varchar(30),City varchar (15),Pincode numeric(8),State varchar (15),Bal_due numeric(10,2));
+create table product_master_kc(Product_no varchar (6),Description varchar (15),Profit_percent numeric(4,2),Unit_measure varchar(10),Qty_on_hand numeric(8),Reorder_lvl numeric(8),Sell_price numeric(8,2),Cost_price numeric(8,2));
+create table sales_master_kc(Salesman_no varchar (6),Salesman_name varchar (20),Addr1 varchar (30),Addr2 varchar(30),City varchar (20),Pincode numeric(8),State varchar (20),Sal_amt numeric(8,2));
+
+
+insert into client_master_kc
+values('C001','Ravi','Navya Bhavan','Elm Street','Chatterji',995522,'Kolkata',32000);
+
+insert into client_master_kc
+values('C023','Ashok','Aradhana','Thripunnithara','Ernakulam',995522,'Kerala',35000);
+
+insert into client_master_kc
+values('C032','Arjun B','Abhayam','Chekkannur','Alappuzha',688002,'Kerala',25000.32);
+
+insert into client_master_kc
+values('C004','Praveena','Navaneetham','Iyamanam','Kottayam',688450,'Kerala',40956.98);
+
+insert into client_master_kc
+values('C067','Akshay','Sky Lane','Stadium Road','Mumbai',995684,'Maharashtra',72500);
+
+insert into client_master_kc
+values('C089','Akshay','Woodlands','Rao Nagar','Chennai',789123,'Tamil Nadu',82056.01);
+
+insert into client_master_kc
+values('C192','Abhay','Pranavam','Madiwala','Banglore',456289,'Karnataka',3500);
+
+insert into client_master_kc
+values('C122','Sajeev','Nandanam','Vadakenada','Thrissur',655926,'Kerala',45000);
+
+insert into client_master_kc
+values('C342','Rohan','Highlight','Electronic City','Banglore',688006,'Karnataka',10000);
+
+insert into client_master_kc
+values('C043','Gaurav','Sruthi','Yamuna Nagar','Pune',688006,'Maharashtra',15000);
+
+
+
+insert into sales_master_kc
+values('C001','Anoop','Vandanam','Eravukadu','Alappuzha',688006,'Kerala',12000);
+
+insert into sales_master_kc
+values('C043','Lingusamy','Anandham','Vattakottai','Kanyakumari',456218,'Tamil Nadu',28000);
+
+insert into sales_master_kc
+values('C020','Sreeram','Sreragam','Kote','Hosadurga',798452,'Karnataka',35560.5);
+
+insert into sales_master_kc
+values('C302','Joyce','SV Residency','Subash Road','Anatapur',564231,'Andra Pradesh',54250.3);
+
+insert into sales_master_kc
+values('C010','Aravindh','Icloud Apartments','Cavelossim Road','Cansaulim',215478,'Goa',40600.2);
+
+insert into sales_master_kc
+values('C213','Madhav','Green Land Villas','Asok Nagar','Mumbai',002457,'Maharashtra',41000);
+
+insert into sales_master_kc
+values('C084','Sankar','Alayam','Tel Nagar','Kantamal',035689,'Odhisa',85490.3);
+
+insert into sales_master_kc
+values('C032','Krishna Chandran','Hareesri','Shibpur','Kolkata',986532,'West Bengal',70000);
+
+insert into sales_master_kc
+values('C113','Sunil','Sreeniketan','Mecon Clony','Ranchi',594200,'Jarkhand',63000);
+
+insert into sales_master_kc
+values('C442','Praveen','Aravindam','Balissery','Kozhikode',688453,'Kerala',1000);
+
+
+
+insert into product_master_kc
+values('P012','CD-ROM',45.3,'0.02 grams',50,32,20,15);
+
+insert into product_master_kc
+values('P320','Face Wash',78.97,'32.9 grams',35,10,57.67,60);
+
+insert into product_master_kc
+values('P765','Day Cream',65.23,'20.3 grams',20,5,65.6,62.3);
+
+insert into product_master_kc
+values('P007','Casuals',43.5,'750 grams',25,20,5125.3,3196.5); 
+
+insert into product_master_kc
+values('P030','Wallets',20.4,'78.4 grams',75,50,325,300); 
+
+insert into product_master_kc
+values('P897','Watch',33.6,'60.89',30,10,498.56,798.43); 
+
+insert into product_master_kc
+values('P003','Calculator',34.2,'120 grams',10,30,450,435);
+
+insert into product_master_kc
+values('p004','Scale',1.09,'0.5 grams',65,23,10,8);
+
+insert into product_master_kc
+values('P005','Pencil',1.09,'0.5 grams',45,100,5,4);
+
+insert into product_master_kc
+values('P095','Pen',30.09,'0.5 grams',45,100,12,8);
+
+
+
+
+
+select * from client_master_kc;
+
+
+
+
+select Description
+from product_master_kc;
+
+
+
+select Salesman_name
+from sales_master_kc
+where Sal_amt<=4000;
+
+
+
+update product_master_kc
+set Cost_price=15
+where Product_no='P012';
+
+select *
+from product_master_kc;
+
+
+
+update sales_master_kc
+set City='Mumbai'
+where pincode=2457;
+
+select *
+from sales_master_kc;
+
+
+
+
+delete from product_master_kc
+where Qty_on_hand=100;
+
+select *
+from product_master_kc;
+
+
+
+
+alter table product_master_kc
+alter column Sell_price type numeric (10,2);
+
+select *
+from product_master_kc;
+
+
+
+
+truncate table product_master_kc;
+
+select *
+from product_master_kc;
+
+
+
+create table temp_table_kc
+as select *
+from client_master_kc;
+
+select *
+from temp_table_kc;
+
+drop table client_master_kc;
+
+select *
+from client_master_kc;
+
+
+

@@ -1,0 +1,50 @@
+﻿create table student_kc(Rno integer,Student_Name varchar (30),Department varchar (20),Contact_no integer);
+
+
+insert into student_kc
+values(32,'K.S.Krishna Chandran','BCA',2235495); 
+
+insert into student_kc
+values(49,'Rohan R Pillai','BCA',8854294);
+
+
+insert into student_kc
+values(53,'Vipin V.V','BCA',5541645);
+
+
+insert into student_kc
+values(18,'Anuvind B','BCA',8841236);
+
+
+insert into student_kc
+values(45,'Rahul.S','BCA',4465295);
+
+insert into student_kc
+values(54,'Sooraj S','BCA',4682595);
+
+alter table student_kc 
+add constraint std_rno_pk primary key (Rno);
+
+alter table student_kc
+alter column Department type varchar (25);
+
+alter table student_kc
+rename column dept to Course
+
+
+select * from student_kc;
+
+alter table student_kc
+add column Home_Town varchar (30);
+
+insert into student_kc (Home_Town)
+values('Alappuzha');
+
+values('Chekkannur')
+values('Vaikom')
+values('Kozhikode')
+values('Guruvayoor')
+values('Wayanad')
+
+alter table student_kc
+alter column Rno drop NOT NULL;

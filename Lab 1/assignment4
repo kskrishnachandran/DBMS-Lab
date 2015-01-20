@@ -1,0 +1,100 @@
+﻿create table category_details(category_id numeric (2),category_name varchar (30));
+
+create table sub_category_details(sub_category_id numeric (2),category_id numeric (2),sub_category_name varchar (30));
+
+create table product_details(product_id numeric (6),category_id numeric (2),sub_category_id numeric (2),product_name varchar (30));
+
+select *
+from category_details;
+
+1).
+alter table category_details
+add primary key(category_id);
+
+2).
+alter table sub_category_details
+add constraint subcatid_pk primary key (sub_category_id); 
+
+3).
+alter table sub_category_details
+add constraint catid_fk foreign key (category_id) references category_details (category_id);
+
+4).
+alter table product_details
+add constraint proid_pk primary key (product_id);
+
+
+alter table product_details
+add constraint catid_fk foreign key (category_id) references category_details(category_id);
+
+alter table product_details
+add constraint subcatid_fk foreign key (sub_category_id) references sub_category_details(sub_category_id);
+
+
+5).
+alter table product_details
+add column price numeric (2);
+
+6).
+alter table product_details
+alter column price type numeric (6,2);
+
+7).
+insert into category_details
+values(22,'Cosmatics');
+
+insert into category_details
+values(44,'Food Products');
+
+insert into category_details
+values(33,'Kitchen Appliances');
+
+insert into category_details
+values(55,'Everyday Use');
+
+
+
+
+insert into sub_category_details
+values(20,33,'Pans & vessels');
+
+
+insert into sub_category_details
+values(56,22,'Sahmpoo');
+
+
+insert into sub_category_details
+values(40,22,'Hair Conditioner');
+
+insert into sub_category_details
+values(70,33,'Serving Ware');
+
+
+
+
+insert into product_details
+values(234,22,56,'Clean & CLear',56.7);
+
+insert into product_details
+values(467,22,40,'Garnier',65.2);
+
+insert into product_details
+values(730,22,56,'Nevia',75.2);
+
+insert into product_details
+values(679,22,40,'Dove',65.2);
+
+8).
+alter table product_details
+drop price;
+
+9).
+alter table product_details
+add column BRAND_NAME varchar (20);
+
+alter table product_details
+add constraint bnam_pro_nn not null (BRAND_NAME);
+
+10).
+alter table Category_details
+rename  to Cat_dt;

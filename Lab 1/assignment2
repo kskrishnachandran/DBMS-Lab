@@ -1,0 +1,52 @@
+﻿create table sales_order_kc(order_no varchar (6) primary key,order_date date,client_no varchar (6),Delivery_addr varchar(25),saleman_no varchar (6),delivary_type character (1),billed_yn character(1),delivery_date date,order_status varchar (10));
+
+create table sales_order_details_kc(dorder_no varchar (6) references sales_order_kc(order_no),product_no varchar (6),qty_order numeric (8),qty_disp numeric (8),product_rate numeric (8,2),primary key(dorder_no,product_no));
+
+
+insert into sales_order_kc
+values('O110','11-JUN-2014','C110','Sky Lane','S007','H','Y','23-NOV-14','Delivered');
+
+insert into sales_order_kc
+values('O210','15-JAN-2014','C210','Green Apartments','S304','C','N','30-OCT-14','UnDeliver');
+
+insert into sales_order_kc
+values('O330','22-DEC-2014','C310','Raipur','S506','H','Y','23-JAN-15','Delivered');
+
+insert into sales_order_kc
+values('O230','28-FEB-2015','XYZ','Rajasthan','S345','H','Y','18-MAR-15','Delivered');
+
+insert into sales_order_kc
+values('O440','28-FEB-2015','XYZ','Rajasthan','S567','C','N','18-MAR-15','Delivered');
+
+
+
+
+insert into sales_order_details_kc
+values('O110','P00001',20,15,23.45);
+
+insert into sales_order_details_kc
+values('O440','P00002',50,30,55.5);
+
+insert into sales_order_details_kc
+values('O230','P00004',45,35,69.4);
+
+
+
+
+a).
+select product_no,qty_order
+from sales_order_details_kc
+where product_no='P00001' or product_no='P00004';
+
+
+b).
+select *
+from sales_order_kc
+where client_no='XYZ';
+
+
+c).
+alter table sales_order_kc
+drop constraint primary key;
+
+
