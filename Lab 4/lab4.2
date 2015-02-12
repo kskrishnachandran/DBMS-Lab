@@ -1,0 +1,29 @@
+﻿create table customer(customer_id varchar (10),cust_name varchar (30),cust_addr varchar (30),city varchar (20),state varchar (20),post_code numeric (10));
+
+create table order_kc(order_id varchar (20),order_date date,customer_id varchar (20));
+
+create table order_line(order_id varchar (10),product_id varchar(20),ordered_qty numeric,primary key(order_id,product_id));
+
+create table product(product_id varchar (20),product_descrip varchar(40),product_finish varchar (30) check(product_finish in('cherry','natural ash','white ash','red oak','natural oak','walnut')),standard_price numeric,product_line_id varchar (20));
+
+
+
+alter table customer
+add constraint cust_id_pk primary key (customer_id); 
+
+alter table order_kc
+add constraint order_id_pk primary key (order_id)
+
+alter table customer
+add constraint order_custid_fk foreign key (customer_id) references customer(customer_id);
+
+alter table order_line
+add constraint order_orderid_fk foreign key (order_id) references order_kc(order_id);
+
+alter table product
+add constraint pro_id_pk primary key (product_id);
+
+alter table order_line
+add constraint order_proid_fk foreign key (product_id) references product(product_id);
+
+

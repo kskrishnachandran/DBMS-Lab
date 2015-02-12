@@ -1,0 +1,164 @@
+﻿create table customer_kc4 (ccode numeric (10) primary key, cname varchar(30), street varchar(20), zip numeric(10), hmtel numeric(10), wktel numeric(10));
+
+
+
+insert into customer_kc4
+values(58,'Vipin V V','Vaikom',609865,45321,8887658432);
+
+
+insert into customer_kc4
+values(49,'Rohan R Pillai','Chekannur',688004,222456,9030568741)
+
+
+insert into customer_kc4
+values(32,'K S Krishna Chandran','Alappuzha',688006,2235495,9400735495);
+
+
+insert into customer_kc4
+values(45,'Kiran K R','Alappuzha',688001,225698,7488425695);
+
+
+insert into customer_kc4
+values(48,'Sooraj','Kozhikode',612345,895623,9876352145)
+
+
+
+
+create table Borrower_kc4(ccode numeric(10) primary key, Bname varchar(30), Street varchar(30), zip numeric(10), hmtel numeric(10), wktel numeric(10));
+
+insert into 
+Borrower_kc4 values(770,'Avinash','Housour Road',556986,859654,7165984510);	
+
+
+insert into 
+Borrower_kc4 values(123,'Bichu','Vinod Nagar','688005','2235986','9565654544');
+
+
+insert into 
+Borrower_kc4 values(555,'Aravindh','GRP Street','564210','8742314','7745879630');	
+
+
+insert into 
+Borrower_kc4 values(449,'Balu','Temple street',778201,2297456,7539518624);
+
+insert into
+Borrower_kc4 values(323,'Jayakumar','Sweet street',654123,220147,9056892314);
+
+
+
+
+create table Account_kc4 (Acno numeric(10) primary key, ccode numeric(10), Branch varchar(30), Balance numeric(10),Actype varchar(20));
+
+
+insert into Account_kc4
+values(3452,123,'Y.M.C.A',25000,'Savings');
+
+
+insert into Account_kc4
+values(9876,654,'Palarivatom',100000,'Fixed');
+
+
+insert into Account_kc4
+values(4432,908,'Vayitilla',250000,'Current');
+
+
+insert into Account_kc4
+values(2589,476,'MG Road',50000,'Savings');
+
+
+insert into Account_kc4
+values(9852,125,'Alpy Main',300000,'Current');
+
+
+
+
+create table Ac_actype_kc4(Acttype varchar(20) primary key, Interest numeric);
+
+insert into Ac_actype_kc4
+values('Fixed',19);
+
+insert into Ac_actype_kc4
+values('Savings',5);
+
+insert into Ac_actype_kc4
+values('Current',25);
+
+insert into Ac_actype_kc4
+values('Studnet',10);
+
+insert into Ac_actype_kc4
+values('Pension',15);
+
+
+
+create table Transaction_kc4(Acno numeric(10) primary key, Tno numeric(10), Trans_Type varchar(20), Tdate date, Issued_by varchar(20), Amt numeric (20));
+
+insert into Transaction_kc4
+values(9245,3343,'By cash','11-Jan-14','Senior Officer',50000);
+
+insert into Transaction_kc4
+values(9087,4567,'Cheque','21-Jun-15','Asst Manager',20000);
+
+insert into Transaction_kc4
+values(7865,1256,'DD','10-Dec-13','Manager',100000);
+
+insert into Transaction_kc4
+values(6509,3856,'Cheque','25-Feb-15','Manager',25000);
+
+insert into Transaction_kc4
+values(5238,6781,'DD','08-Mar-15','Asst Manager',35000);
+
+
+
+
+create table Loan_kc4(Lno numeric(10) primary key,Ccode numeric (10),Branch varchar (30),Debit varchar (10));
+
+insert into Loan_kc4
+values(123,58,'Y.M.C.A','Y'); 
+
+insert into Loan_kc4
+values(345,49,'Alpy Main','N');
+
+insert into Loan_kc4
+values(567,32,'Palarivattom','Y');
+
+
+
+
+create table Loan_payment_kc4(Lno numeric(10) primary key, paymentno numeric(10), Pdate date, Issuedby varchar(20), amt numeric (10));
+
+insert into Loan_payment_kc4
+values(6745,3214,'12-Apr-14','Asst Manager',45000);
+
+insert into Loan_payment_kc4
+values(9876,6534,'25-May-14','Senior Officer',50000);
+
+insert into Loan_payment_kc4
+values(9875,8743,'20-Aug-15','Manager',100000);
+
+
+1)
+select Cname
+from Customer_kc4
+where ccode = (select ccode from Loan_kc4);
+
+2)
+select ccode,balance 
+from Account_kc4 where balance >(select avg(balance) from Account_kc4 where ccode in (select ccode from Customer_kc4));   
+
+3)
+select cname 
+from Customer_kc4 where ccode =( select ccode from Account_kc4 where acno =001);
+
+4)
+select cname
+from Customer_kc4 where ccode in(select ccode from Account_kc4 where branch='Y.M.C.A' and actype in(select actype from ac_actype_kc4 where interest=0));
+
+5)
+select cname
+from Customer_kc4 where ccode in (select  ccode from Account_kc4 where  acno =(select acno from transaction_kc4 where Tdate='11-Jan-14'));   
+
+6)
+select cname
+from Customer_kc4 where ccode in(Select ccode from Account_kc4 where balance >(select avg(balance) from Account_kc4 where ccode in (select ccode from Customer_kc4))); 
+  

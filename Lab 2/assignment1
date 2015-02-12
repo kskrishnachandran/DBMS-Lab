@@ -1,0 +1,17 @@
+﻿create table client_master(Client_no varchar (10),Cname varchar (30) not null,Address1 varchar (30),Address2 varchar(30),city varchar (20),pin_code numeric (6),state varchar (30),bal_due numeric (10,3));
+create table product_master(Product_no varchar (10),Description varchar (30) not null,Profit_percent numeric (10,2) not null,Unit_measure numeric (10,2) not null,Qty_on_hand numeric (10) not null,Reorder_lvl numeric (10) not null,Sell_price numeric (10,2) not null,Cost_price numeric (10,2) not null);
+create table sales_master(Salesman_no varchar (10),Salesman_name varchar (30) not null,Address1 varchar (30) not null,Address2 varchar(30),city varchar (20),pin_code numeric (6),state varchar (30),Sal_amt numeric (10,2) not null,Tgt_to_get numeric (10,2) not null,remarks varchar (30) not null);
+create table sales_order(Order_no varchar (10),Order_date date,Client_no varchar (10),Dely_addr varchar (30),Saleman_no varchar (10),Dely_type varchar 
+
+
+
+alter table client_master
+add constraint client_cno_pk primary key (Client_no);
+
+alter table client_master
+add constraint client_cname_null NOTNULL (Cname);
+
+select * 
+from sales_master;
+
+drop table sales_master;
